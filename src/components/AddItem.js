@@ -2,6 +2,7 @@ import React, { Component} from "react";
 import serialForm from 'form-serialize';
 
 import Aux from '../components/Aux';
+import Button from '../components/Button';
 
 class AddItem extends Component {
 
@@ -27,7 +28,7 @@ class AddItem extends Component {
                         Quantity:
           <input type="number" name="quantity" placeholder="Enter quantity" />
                     </label>
-                    <input type="submit" value="Submit" />
+                    <Button>Add New Item</Button>
                 </form>
             </Aux>
         )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import serialForm from 'form-serialize';
+
 
 import Aux from '../components/Aux';
 import ListFruits from '../components/ListFruits';
@@ -48,7 +48,6 @@ class ListItems extends Component {
                 fruits: state.fruits.concat([values])
             }))
         }
-
         //console.log(JSON.stringify(this.state, null, 4))
     }
 
@@ -60,7 +59,7 @@ class ListItems extends Component {
                     fruits={this.state.fruits}
                     addRemoveEventHandler={this.addRemoveEventHandler}
                 />
-                <AddItem addItem={this.addItemHandle}/>
+                <AddItem addItem={this.addItemHandle} />
             </Aux>
         )
     }
