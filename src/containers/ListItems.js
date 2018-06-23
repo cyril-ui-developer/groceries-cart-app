@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import serialForm from 'form-serialize';
 
 import Aux from '../components/Aux';
 import ListFruits from '../components/ListFruits';
 //import Model from '../components/models/Model';
-import serialForm from 'form-serialize';
+import AddItem from '../components/AddItem';
+
 
 class ListItems extends Component {
     constructor(props) {
         super(props);
     }
-    
+
     state = {
         fruits: [
             { label: "Apple", quantity: 2, price: "0.95" },
@@ -40,10 +42,7 @@ class ListItems extends Component {
         })
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault()
-        const values = serialForm(e.target, { hash: true })
-        console.log(values)
+    addItemHandle = (values) => {
         if (values) {
             this.setState(state => ({
                 fruits: state.fruits.concat([values])
@@ -61,21 +60,7 @@ class ListItems extends Component {
                     fruits={this.state.fruits}
                     addRemoveEventHandler={this.addRemoveEventHandler}
                 />
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Name:
-          <input type="text" name="label" placeholder="Enter item name" />
-                    </label>
-                    <label>
-                        Price:
-          <input type="text" name="price" placeholder="Enter price" />
-                    </label>
-                    <label>
-                        Quantity:
-          <input type="number" name="quantity" placeholder="Enter quantity" />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
+                <AddItem addItem={this.addItemHandle}/>
             </Aux>
         )
     }
